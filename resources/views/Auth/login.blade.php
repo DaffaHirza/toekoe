@@ -32,7 +32,7 @@
                             <div class="mt-4 p-3 bg-red-100 text-red-800 rounded">
                                 <ul class="list-disc pl-5">
                                     @foreach ($errors->all() as $error)
-                                        <li>Nama atau Email salah</li>
+                                        <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>
                             </div>

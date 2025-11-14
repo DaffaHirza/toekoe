@@ -117,25 +117,7 @@
             </thead>
 
             <tbody class="whitespace-nowrap divide-y divide-gray-200">
-                {{-- @forelse($user as $index => $u)
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $index + 1 }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $u->nama ?? ($u->name ?? '-') }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $u->email }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $u->no_hp ?? '-' }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $u->status ?? '-' }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="{{ route('admin.user.show', $u->id) }}"
-                                class="text-blue-600 hover:underline mr-2">Lihat</a>
-                            <a href="{{ route('admin.user.edit', $u->id) }}"
-                                class="text-yellow-600 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td class="px-6 py-4" colspan="6">Tidak ada penjual.</td>
-                    </tr>
-                @endforelse --}}
+
                 @forelse ($user as $users)
                     <tr>
                         <td class="pl-4 w-8">
@@ -159,50 +141,51 @@
                             </div>
                         </td>
                         <td class="px-4 py-3 text-sm text-slate-600 font-medium">
-                            <a href="mailto:timj1456@gmail.com" class="underline">
+                            <p class="underline">
                                 {{ $users->email }}
-                            </a>
+                            </p>
                         </td>
                         <td class="px-4 py-3 text-sm text-slate-600 font-medium">
                             {{ $users->role }}
                         </td>
                         <td class="px-4 py-3 text-sm text-slate-600 font-medium">
 
-                            <form action="{{ route('admin.sellers.updateStatus', $users->id) }}" method="POST">
-                                @csrf
-                                @method('PATCH')
+                            @if ($users->role !== 'admin')
+                                <form action="{{ route('admin.sellers.updateStatus', $users->id) }}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
 
-                                <select name="status" onchange="this.form.submit()"
-                                    class="border rounded-lg px-2 py-1 focus:outline-none
-                @if ($users->status === 'approved') text-green-600 border-green-400
-                @elseif($users->status === 'pending')
-                    text-yellow-600 border-yellow-400
-                @else
-                    text-red-600 border-red-400 @endif">
+                                    <select name="status" onchange="this.form.submit()"
+                                        class="border rounded-lg 
+            @if ($users->status === 'approved') text-green-600 border-green-400
+            @elseif($users->status === 'pending') text-yellow-600 border-yellow-400
+            @else text-red-600 border-red-400 @endif">
 
-                                    <option value="approved" class="text-green-600"
-                                        {{ $users->status == 'approved' ? 'selected' : '' }}>
-                                        Approved
-                                    </option>
+                                        <option value="approved" class="text-green-600"
+                                            {{ $users->status == 'approved' ? 'selected' : '' }}>
+                                            Approved
+                                        </option>
 
-                                    <option value="pending" class="text-yellow-600"
-                                        {{ $users->status == 'pending' ? 'selected' : '' }}>
-                                        Pending
-                                    </option>
+                                        <option value="pending" class="text-yellow-600"
+                                            {{ $users->status == 'pending' ? 'selected' : '' }}>
+                                            Pending
+                                        </option>
 
-                                    <option value="rejected" class="text-red-600"
-                                        {{ $users->status == 'rejected' ? 'selected' : '' }}>
-                                        Rejected
-                                    </option>
+                                        <option value="rejected" class="text-red-600"
+                                            {{ $users->status == 'rejected' ? 'selected' : '' }}>
+                                            Rejected
+                                        </option>
 
-                                    <option value="suspend" class="text-red-600"
-                                        {{ $users->status == 'suspend' ? 'selected' : '' }}>
-                                        Suspended
-                                    </option>
+                                        <option value="suspend" class="text-red-600"
+                                            {{ $users->status == 'suspend' ? 'selected' : '' }}>
+                                            Suspended
+                                        </option>
 
-                                </select>
-                            </form>
-
+                                    </select>
+                                </form>
+                            @else
+                                <span class="text-blue-600 font-semibold">Aproved</span>
+                            @endif
                         </td>
                         <td class="px-4 py-3 text-sm text-slate-600 font-medium">
                             04 April 2025, 8:20 pm

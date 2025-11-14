@@ -27,64 +27,25 @@ class LoginController extends Controller
     public function create(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string',
+            'email' => ['required', 'email'],
+            'password' => ['required']
         ]);
-        if (Auth::user()->role == 'seller' && Auth::user()->status == 'suspended') {
-            Auth::logout();
-            return back()->withErrors(['Akun Anda sedang disuspend.']);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            $user = Auth::user();
+
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
+
+            if ($user->role === 'seller') {
+                return redirect()->route('penjual.beranda');
+            }
+
+            return redirect()->route('beranda');
         }
-
-
-        $user = User::where('email', $credentials['email'])->first();
-
-        // Jika email tidak ditemukan
-        if (!$user) {
-            throw ValidationException::withMessages([
-                'email' => ['Email atau password salah.'],
-            ]);
-        }
-
-        // Cek password benar?
-        if (!Hash::check($credentials['password'], $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['Email atau password salah.'],
-            ]);
-        }
-
-        // Cek status user
-        if ($user->status === 'pending') {
-            throw ValidationException::withMessages([
-                'email' => ['Akun Anda masih menunggu persetujuan admin.'],
-            ]);
-        }
-
-        if ($user->status === 'rejected') {
-            throw ValidationException::withMessages([
-                'email' => ['Akun Anda ditolak. Alasan: ' . $user->rejection_reason],
-            ]);
-        }
-
-        if ($user->status === 'suspend') {
-            throw ValidationException::withMessages([
-                'email' => ['Akun Anda telah disuspend. Hubungi admin.'],
-            ]);
-        }
-
-        if ($user->role !== 'admin' && $user->status !== 'approved') {
-            throw ValidationException::withMessages([
-                'email' => ['Akun Anda tidak aktif.'],
-            ]);
-        }
-
-        Auth::login($user);
-        $request->session()->regenerate();
-
-        if ($user->role === 'seller') {
-            return redirect()->intended('/penjual/beranda');
-        }
-
-        return redirect()->intended('/admin/beranda');
     }
 
 

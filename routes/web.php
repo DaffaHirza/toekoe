@@ -18,10 +18,10 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'create']);
 
-Route::middleware(['auth', 'role:seller', 'checkActive'])->group(function () {
+Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::get('/penjual/beranda', function () {
         return view('penjual.beranda');
-    });
+    })->name('penjual.beranda');
 });
 
 Route::middleware(['auth', 'role:admin'])
