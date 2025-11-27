@@ -37,7 +37,7 @@ class LoginController extends Controller
             $user = Auth::user();
 
             if ($user->role === 'admin') {
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.beranda');
             }
 
             if ($user->role === 'seller') {

@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\admin\DataPenjualController;
-
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\penjual\ProductController;
 
 Route::get('/', function () {
     return view('pages.beranda');
@@ -22,6 +23,9 @@ Route::middleware(['auth', 'role:seller'])->group(function () {
     Route::get('/penjual/beranda', function () {
         return view('penjual.beranda');
     })->name('penjual.beranda');
+    Route::get('/penjual/produk', [ProductController::class, 'index'])->name('penjual.pages.view');
+    Route::get('/penjual/produk/create', [ProductController::class, 'create'])->name('penjual.pages.create');
+    Route::post('/penjual/produk', [ProductController::class, 'store'])->name('penjual.pages.store');
 });
 
 Route::middleware(['auth', 'role:admin'])
@@ -34,11 +38,8 @@ Route::middleware(['auth', 'role:admin'])
 
         Route::resource('/sellers', DataPenjualController::class);
 
-        // Custom route to update seller's status (uses enum: pending, approved, rejected)
         Route::patch('sellers/{user}/status', [DataPenjualController::class, 'updateStatus'])
             ->name('sellers.updateStatus');
 
-        // Convenience toggle route (approve <-> pending)
-        Route::post('sellers/{user}/toggle-status', [DataPenjualController::class, 'toggleStatus'])
-            ->name('sellers.toggleStatus');
+        Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
     });

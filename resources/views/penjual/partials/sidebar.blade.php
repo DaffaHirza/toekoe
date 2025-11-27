@@ -60,7 +60,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)"
+                            <a href="{{ route('penjual.pages.view') }}"
                                 class="text-white text-[15px] font-medium block cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2 transition-all duration-300">
                                 <span>Lihat Produk</span>
                             </a>

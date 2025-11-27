@@ -19,10 +19,10 @@
 
         <div class="flex items-start">
 
-            @include('admin.partials.sidebar')
+            @include('penjual.partials.sidebar')
 
             <section class="main-content w-full px-6">
-                @include('admin.partials.navbar')
+                @include('penjual.partials.navbar')
 
                 <div class="my-6">
                     @yield('content')
