@@ -39,6 +39,11 @@ class Produk extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'produk_id');
+    }
+
     public function getFormattedHargaAttribute()
     {
         return 'Rp ' . number_format($this->harga, 0, ',', '.');

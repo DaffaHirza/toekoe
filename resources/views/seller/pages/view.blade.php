@@ -1,4 +1,4 @@
-@extends('penjual.layouts.master')
+@extends('seller.layouts.master')
 
 @section('title', 'Data Produk')
 
@@ -6,7 +6,7 @@
     <div class="p-6">
         <div class="mb-4 flex justify-between items-center">
             <h1 class="font-bold text-2xl">Data Produk</h1>
-            <a href="{{ route('penjual.pages.create') }}"
+            <a href="{{ route('seller.pages.create') }}"
                 class="text-sm cursor-pointer relative px-6 py-2.5 text-blue-600 font-semibold border border-blue-600 rounded-lg overflow-hidden group">
                 <span
                     class="absolute left-0 top-0 w-full h-full bg-blue-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out z-0"></span>

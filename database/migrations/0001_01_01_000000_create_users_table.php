@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('foto');
             $table->string('foto_ktp');
             $table->string('password');
+            $table->enum('role', ['admin', 'seller'])->default('seller');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->text('rejection_reason')->nullable();
             $table->string('is_active')->default(true);

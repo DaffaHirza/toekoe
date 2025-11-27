@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Data Penjual Admin')
+@section('title', 'Data Seller Admin')
 
 @section('content')
     <div class="overflow-x-auto my-6">

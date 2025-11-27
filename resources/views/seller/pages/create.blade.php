@@ -1,4 +1,4 @@
-@extends('penjual.layouts.master')
+@extends('seller.layouts.master')
 
 @section('title', 'Tambah Data Produk')
 
@@ -30,7 +30,7 @@
             Upload Produk Baru
         </h2>
 
-        <form action="{{ route('penjual.pages.store') }}" method="POST" enctype="multipart/form-data" class="space-y-5">
+        <form action="{{ route('seller.pages.store') }}" method="POST" enctype="multipart/form-data" class="space-y-5">
             @csrf
 
             {{-- NAMA PRODUK --}}
@@ -150,7 +150,7 @@
                     class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl py-3 transition">
                     🚀 Upload Produk Sekarang
                 </button>
-                <a href="{{ route('penjual.pages.view') }}"
+                <a href="{{ route('seller.pages.view') }}"
                     class="px-6 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold rounded-xl py-3 transition">
                     Batal
                 </a>

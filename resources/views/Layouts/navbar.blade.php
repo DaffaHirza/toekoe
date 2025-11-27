@@ -95,7 +95,7 @@
                                     @else
                                         <li
                                             class="dropdown-item py-2.5 px-5 flex items-center hover:bg-slate-100 text-slate-600 font-medium text-sm cursor-pointer">
-                                            <a href="{{ route('penjual.beranda') }}"
+                                            <a href="{{ route('seller.beranda') }}"
                                                 class="flex items-center w-full text-[#1154d4]">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-3 fill-[#1154d4]"
                                                     viewBox="0 0 512 512">

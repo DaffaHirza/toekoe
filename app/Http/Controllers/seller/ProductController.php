@@ -55,7 +55,7 @@ class ProductController extends Controller
             'stok' => $validated['stok'],
             'kondisi' => $validated['kondisi'],
             'image' => $imagePath,
-            'user_id' => Auth::id(), // ID penjual yang login
+            'user_id' => Auth::id(), // ID seller yang login
             'category_id' => $validated['category_id'],
         ]);
 
