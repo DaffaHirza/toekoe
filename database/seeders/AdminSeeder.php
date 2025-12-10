@@ -14,7 +14,6 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Pastikan data Admin TIDAK duplikat
         if (User::where('email', 'admin@example.com')->doesntExist()) {
             User::create([
                 // Data Admin

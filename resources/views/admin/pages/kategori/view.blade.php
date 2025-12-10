@@ -1,8 +1,24 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Data Seller Admin')
+@section('title', 'Data Category Admin')
 
 @section('content')
+    <div class="flex justify-between items-center">
+        <h1 class="font-bold text-2xl">Data Kategori</h1>
+        <a href="{{ route('admin.category.create') }}"
+            class="py-3 px-5 bg-blue-500 text-white rounded-lg flex items-center gap-2">
+            <svg class="w-5 h-5" fill="#ffff" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path
+                        d="M16 0c-8.836 0-16 7.163-16 16s7.163 16 16 16c8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 30.032c-7.72 0-14-6.312-14-14.032s6.28-14 14-14 14 6.28 14 14-6.28 14.032-14 14.032zM23 15h-6v-6c0-0.552-0.448-1-1-1s-1 0.448-1 1v6h-6c-0.552 0-1 0.448-1 1s0.448 1 1 1h6v6c0 0.552 0.448 1 1 1s1-0.448 1-1v-6h6c0.552 0 1-0.448 1-1s-0.448-1-1-1z">
+                    </path>
+                </g>
+            </svg>
+            Tambah Kategori
+        </a>
+    </div>
     <div class="overflow-x-auto my-6">
         <table class="min-w-full bg-white">
             <thead class="bg-gray-50 whitespace-nowrap">
@@ -20,57 +36,16 @@
                     </th>
                     <th class="px-4 py-3 text-left text-sm font-medium text-slate-600">
                         <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-gray-500 inline mr-2"
-                                viewBox="0 0 512 512">
-                                <path
-                                    d="M337.711 241.3a16 16 0 0 0-11.461 3.988c-18.739 16.561-43.688 25.682-70.25 25.682s-51.511-9.121-70.25-25.683a16.007 16.007 0 0 0-11.461-3.988c-78.926 4.274-140.752 63.672-140.752 135.224v107.152C33.537 499.293 46.9 512 63.332 512h385.336c16.429 0 29.8-12.707 29.8-28.325V376.523c-.005-71.552-61.831-130.95-140.757-135.223zM446.463 480H65.537V376.523c0-52.739 45.359-96.888 104.351-102.8C193.75 292.63 224.055 302.97 256 302.97s62.25-10.34 86.112-29.245c58.992 5.91 104.351 50.059 104.351 102.8zM256 234.375a117.188 117.188 0 1 0-117.188-117.187A117.32 117.32 0 0 0 256 234.375zM256 32a85.188 85.188 0 1 1-85.188 85.188A85.284 85.284 0 0 1 256 32z"
-                                    data-original="#000000"></path>
-                            </svg>
-                            Full Name
+
+                            No
                         </div>
                     </th>
                     <th class="px-4 py-3 text-left text-sm font-medium text-slate-600">
                         <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-gray-500 inline mr-2"
-                                viewBox="0 0 512 512">
-                                <path
-                                    d="M467 76H45C20.238 76 0 96.149 0 121v270c0 24.86 20.251 45 45 45h422c24.762 0 45-20.149 45-45V121c0-24.857-20.248-45-45-45zm-6.91 30L267.624 299.094c-5.864 5.882-17.381 5.886-23.248 0L51.91 106h408.18zM30 385.485v-258.97L159.065 256 30 385.485zM51.91 406l128.334-128.752 42.885 43.025c17.574 17.631 48.175 17.624 65.743 0l42.885-43.024L460.09 406H51.91zM482 385.485 352.935 256 482 126.515v258.97z"
-                                    data-original="#000000" />
-                            </svg>
-                            Email
+                            Nama Kategori
                         </div>
                     </th>
-                    <th class="px-4 py-3 text-left text-sm font-medium text-slate-600">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-gray-500 inline mr-2"
-                                fill-rule="evenodd" viewBox="0 0 24 24">
-                                <g transform="matrix(1.08 0 0 1.08 -.96 -.96)">
-                                    <path
-                                        d="M11.5 20.263H2.95a.2.2 0 0 1-.2-.2v-1.45c0-.831.593-1.563 1.507-2.185 1.632-1.114 4.273-1.816 7.243-1.816a.75.75 0 0 0 0-1.5c-3.322 0-6.263.831-8.089 2.076-1.393.95-2.161 2.157-2.161 3.424v1.451a1.7 1.7 0 0 0 1.7 1.7h8.55a.75.75 0 1 0 0-1.5zm0-19.013C8.464 1.25 6 3.714 6 6.75s2.464 5.5 5.5 5.5S17 9.786 17 6.75s-2.464-5.5-5.5-5.5zm0 1.5c2.208 0 4 1.792 4 4s-1.792 4-4 4-4-1.792-4-4 1.792-4 4-4zm5.25 14.75V20a.75.75 0 0 0 1.5 0v-2.5a.75.75 0 0 0-1.5 0z"
-                                        data-original="#000000" />
-                                    <circle cx="17.5" cy="15.25" r="1" data-original="#000000" />
-                                    <path
-                                        d="M17.5 12.25c-2.898 0-5.25 2.352-5.25 5.25s2.352 5.25 5.25 5.25 5.25-2.352 5.25-5.25-2.352-5.25-5.25-5.25zm0 1.5c2.07 0 3.75 1.68 3.75 3.75s-1.68 3.75-3.75 3.75-3.75-1.68-3.75-3.75 1.68-3.75 3.75-3.75z"
-                                        data-original="#000000" />
-                                </g>
-                            </svg>
-                            Role
-                        </div>
-                    </th>
-                    <th class="px-4 py-3 text-left text-sm font-medium text-slate-600">
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-gray-500 inline mr-2"
-                                viewBox="0 0 24 24">
-                                <path
-                                    d="M15.24 23.61H8.76c-5.864 0-8.37-2.506-8.37-8.37V8.76C.39 2.896 2.896.39 8.76.39h6.48c5.864 0 8.37 2.506 8.37 8.37v6.48c0 5.864-2.506 8.37-8.37 8.37zM8.76 2.01c-4.979 0-6.75 1.771-6.75 6.75v6.48c0 4.979 1.771 6.75 6.75 6.75h6.48c4.979 0 6.75-1.771 6.75-6.75V8.76c0-4.979-1.771-6.75-6.75-6.75z"
-                                    data-original="#000000" />
-                                <path
-                                    d="M6.956 15.5a.795.795 0 0 1-.496-.174.809.809 0 0 1-.152-1.134l2.57-3.337c.314-.4.757-.659 1.264-.723a1.886 1.886 0 0 1 1.404.388l1.977 1.556a.23.23 0 0 0 .205.054c.043 0 .119-.022.184-.108l2.494-3.219a.8.8 0 0 1 1.134-.14c.357.27.422.777.14 1.134l-2.494 3.218c-.313.4-.756.659-1.264.713a1.873 1.873 0 0 1-1.404-.389l-1.976-1.555a.238.238 0 0 0-.205-.054c-.043 0-.119.022-.184.108l-2.57 3.337a.732.732 0 0 1-.627.324z"
-                                    data-original="#000000" />
-                            </svg>
-                            Status
-                        </div>
-                    </th>
+
                     <th class="px-4 py-3 text-left text-sm font-medium text-slate-600">
                         <div class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-gray-500 inline mr-2"
@@ -90,7 +65,7 @@
                                     <circle cx="17" cy="18" r="1" data-original="#000000" />
                                 </g>
                             </svg>
-                            Joined date
+                            Tanggal Pembuatan
                         </div>
                     </th>
                     <th class="px-4 py-3 text-left text-sm font-medium text-slate-600">
@@ -118,7 +93,7 @@
 
             <tbody class="whitespace-nowrap divide-y divide-gray-200">
 
-                @forelse ($user as $users)
+                @forelse($categories as $category)
                     <tr>
                         <td class="pl-4 w-8">
                             <input id="checkbox9" type="checkbox" class="hidden peer" />
@@ -133,63 +108,17 @@
                         </td>
                         <td class="px-4 py-3 text-sm text-slate-900 font-medium">
                             <div class="flex items-center cursor-pointer w-max">
-                                <img src='https://readymadeui.com/team-1.webp' alt="team-1"
-                                    class="w-9 h-9 rounded-full shrink-0" />
                                 <div class="ml-2">
-                                    <p>{{ $users->nama }}</p>
+                                    <p>{{ $category->id }}</p>
                                 </div>
                             </div>
                         </td>
                         <td class="px-4 py-3 text-sm text-slate-600 font-medium">
-                            <p class="underline">
-                                {{ $users->email }}
-                            </p>
+                            {{ $category->nama }}
                         </td>
+
                         <td class="px-4 py-3 text-sm text-slate-600 font-medium">
-                            {{ $users->role }}
-                        </td>
-                        <td class="px-4 py-3 text-sm text-slate-600 font-medium">
-
-                            @if ($users->role !== 'admin')
-                                <form action="{{ route('admin.sellers.updateStatus', $users->id) }}" method="POST">
-                                    @csrf
-                                    @method('PATCH')
-
-                                    <select name="status" onchange="this.form.submit()"
-                                        class="border rounded-lg 
-            @if ($users->status === 'approved') text-green-600 border-green-400
-            @elseif($users->status === 'pending') text-yellow-600 border-yellow-400
-            @elseif($users->status === 'suspend') text-purple-600 border-purple-400
-            @else text-red-600 border-red-400 @endif">
-
-                                        <option value="approved" class="text-green-600"
-                                            {{ $users->status == 'approved' ? 'selected' : '' }}>
-                                            Approved
-                                        </option>
-
-                                        <option value="pending" class="text-yellow-600"
-                                            {{ $users->status == 'pending' ? 'selected' : '' }}>
-                                            Pending
-                                        </option>
-
-                                        <option value="rejected" class="text-red-600"
-                                            {{ $users->status == 'rejected' ? 'selected' : '' }}>
-                                            Rejected
-                                        </option>
-
-                                        <option value="suspend" class="text-purple-600"
-                                            {{ $users->status == 'suspend' ? 'selected' : '' }}>
-                                            Suspended
-                                        </option>
-
-                                    </select>
-                                </form>
-                            @else
-                                <span class="text-blue-600 font-semibold">Aproved</span>
-                            @endif
-                        </td>
-                        <td class="px-4 py-3 text-sm text-slate-600 font-medium">
-                            04 April 2025, 8:20 pm
+                            {{ $category->created_at?->format('d M Y') }}
                         </td>
                         <td class="flex gap-3 px-4 py-3 text-sm font-medium">
                             <button type="button"
@@ -224,13 +153,12 @@
                         </td>
                     </tr>
                 @empty
+                    <tr>
+                        <td colspan="3" class="px-4 py-6 text-center text-sm text-slate-500">Belum ada kategori.</td>
+                    </tr>
                 @endforelse
-
-
-
             </tbody>
         </table>
-
 
     </div>
 

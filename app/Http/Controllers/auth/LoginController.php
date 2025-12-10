@@ -37,15 +37,34 @@ class LoginController extends Controller
             $user = Auth::user();
 
             if ($user->role === 'admin') {
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.beranda');
             }
 
             if ($user->role === 'seller') {
-                return redirect()->route('penjual.beranda');
+                // Cek status approval untuk seller
+                if ($user->status === 'pending') {
+                    Auth::logout();
+                    return back()->withErrors([
+                        'email' => 'Akun Anda masih menunggu persetujuan admin.'
+                    ])->withInput();
+                }
+
+                if ($user->status === 'rejected') {
+                    Auth::logout();
+                    return back()->withErrors([
+                        'email' => 'Akun Anda ditolak. Alasan: ' . ($user->rejection_reason ?? 'Tidak disebutkan')
+                    ])->withInput();
+                }
+
+                return redirect()->route('seller.beranda');
             }
 
-            return redirect()->route('beranda');
+            return redirect()->intended('/');
         }
+
+        return back()->withErrors([
+            'email' => 'Email atau password salah.',
+        ])->withInput();
     }
 
 

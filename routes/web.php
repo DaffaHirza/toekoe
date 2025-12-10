@@ -1,15 +1,21 @@
 <?php
 
 use App\Http\Controllers\admin\BerandaController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductFilterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\admin\DataPenjualController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ReportController;
+use App\Http\Controllers\seller\ProductController;
+use App\Http\Controllers\seller\BerandaController as SellerBerandaController;
 
-
-Route::get('/', function () {
-    return view('pages.beranda');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/filter', [ProductFilterController::class, 'index'])->name('produk.filter');
+Route::get('/produk/{id}', [HomeController::class, 'show'])->name('produk.detail');
+Route::post('/produk/{id}/review', [HomeController::class, 'storeReview'])->name('produk.review.store');
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -43,11 +49,14 @@ Route::middleware(['auth', 'role:admin'])
 
         Route::resource('/sellers', DataPenjualController::class);
 
-        // Custom route to update seller's status (uses enum: pending, approved, rejected)
         Route::patch('sellers/{user}/status', [DataPenjualController::class, 'updateStatus'])
             ->name('sellers.updateStatus');
 
-        // Convenience toggle route (approve <-> pending)
-        Route::post('sellers/{user}/toggle-status', [DataPenjualController::class, 'toggleStatus'])
-            ->name('sellers.toggleStatus');
+        Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+        Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+        Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+
+        Route::get('/reports/seller-status', [ReportController::class, 'sellerStatusReport'])->name('reports.sellerStatus');
+        Route::get('/reports/seller-by-province', [ReportController::class, 'sellerByProvinceReport'])->name('reports.sellerByProvince');
+        Route::get('/reports/products-by-rating', [ReportController::class, 'productsByRatingReport'])->name('reports.productsByRating');
     });

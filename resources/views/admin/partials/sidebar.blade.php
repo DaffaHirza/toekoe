@@ -16,7 +16,7 @@
 
         <div class="py-4 px-4">
             <ul class="space-y-2">
-                <a href="javascript:void(0)"
+                <a href="{{ route('admin.beranda') }}"
                     class="text-white text-[15px] font-medium flex items-center cursor-pointer hover:bg-blue-700 rounded-md px-3 py-2.5 transition-all duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-[18px] h-[18px] mr-3"
                         viewBox="0 0 24 24">
@@ -69,7 +69,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('admin.sellers.index') }}"
+                    <a href="javascript:void(0)"
                         class="text-white text-[15px] font-medium flex items-center cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2.5 transition-all duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-[18px] h-[18px] mr-3"
                             viewBox="0 0 512 512">
@@ -77,7 +77,7 @@
                                 d="M437.02 74.98C388.668 26.63 324.379 0 256 0S123.332 26.629 74.98 74.98C26.63 123.332 0 187.621 0 256s26.629 132.668 74.98 181.02C123.332 485.37 187.621 512 256 512s132.668-26.629 181.02-74.98C485.37 388.668 512 324.379 512 256s-26.629-132.668-74.98-181.02zM111.105 429.297c8.454-72.735 70.989-128.89 144.895-128.89 38.96 0 75.598 15.179 103.156 42.734 23.281 23.285 37.965 53.687 41.742 86.152C361.641 462.172 311.094 482 256 482s-105.637-19.824-144.895-52.703zM256 269.507c-42.871 0-77.754-34.882-77.754-77.753C178.246 148.879 213.13 114 256 114s77.754 34.879 77.754 77.754c0 42.871-34.883 77.754-77.754 77.754zm170.719 134.427a175.9 175.9 0 0 0-46.352-82.004c-18.437-18.438-40.25-32.27-64.039-40.938 28.598-19.394 47.426-52.16 47.426-89.238C363.754 132.34 315.414 84 256 84s-107.754 48.34-107.754 107.754c0 37.098 18.844 69.875 47.465 89.266-21.887 7.976-42.14 20.308-59.566 36.542-25.235 23.5-42.758 53.465-50.883 86.348C50.852 364.242 30 312.512 30 256 30 131.383 131.383 30 256 30s226 101.383 226 226c0 56.523-20.86 108.266-55.281 147.934zm0 0"
                                 data-original="#000000" />
                         </svg>
-                        <span class="overflow-hidden text-ellipsis whitespace-nowrap">Data Penjual</span>
+                        <span class="overflow-hidden text-ellipsis whitespace-nowrap">Data Seller</span>
                         <svg xmlns="http://www.w3.org/2000/svg"
                             class="arrowIcon w-3 fill-current -rotate-90 ml-auto transition-all duration-500"
                             viewBox="0 0 451.847 451.847">
@@ -88,21 +88,9 @@
                     </a>
                     <ul class="sub menu max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out ml-8">
                         <li>
-                            <a href="javascript:void(0)"
+                            <a href="{{ route('admin.sellers.index') }}"
                                 class="text-white text-[15px] font-medium block cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2 transition-all duration-300">
                                 <span>Users</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)"
-                                class="text-white text-[15px] font-medium block cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2 transition-all duration-300">
-                                <span>Leads</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)"
-                                class="text-white text-[15px] font-medium block cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2 transition-all duration-300">
-                                <span>Visitors</span>
                             </a>
                         </li>
                     </ul>
@@ -132,15 +120,54 @@
                     </a>
                     <ul class="sub menu max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out ml-8">
                         <li>
-                            <a href="javascript:void(0)"
+                            <a href="{{ route('admin.category.create') }}"
                                 class="text-white text-[15px] font-medium block cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2 transition-all duration-300">
                                 <span>Tambah Kategori</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)"
+                            <a href="{{ route('admin.category.index') }}"
                                 class="text-white text-[15px] font-medium block cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2 transition-all duration-300">
                                 <span>Lihat Kategori</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)"
+                        class="text-white text-[15px] font-medium flex items-center cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2.5 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-[18px] h-[18px] mr-3"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
+                        </svg>
+                        <span class="overflow-hidden text-ellipsis whitespace-nowrap">Laporan</span>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="arrowIcon w-3 fill-current -rotate-90 ml-auto transition-all duration-500"
+                            viewBox="0 0 451.847 451.847">
+                            <path
+                                d="M225.923 354.706c-8.098 0-16.195-3.092-22.369-9.263L9.27 151.157c-12.359-12.359-12.359-32.397 0-44.751 12.354-12.354 32.388-12.354 44.748 0l171.905 171.915 171.906-171.909c12.359-12.354 32.391-12.354 44.744 0 12.365 12.354 12.365 32.392 0 44.751L248.292 345.449c-6.177 6.172-14.274 9.257-22.369 9.257z"
+                                data-original="#000000" />
+                        </svg>
+                    </a>
+                    <ul class="sub menu max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out ml-8">
+                        <li>
+                            <a href="{{ route('admin.reports.sellerStatus') }}" target="_blank"
+                                class="text-white text-[15px] font-medium block cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2 transition-all duration-300">
+                                <span>Akun Penjual</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.reports.sellerByProvince') }}" target="_blank"
+                                class="text-white text-[15px] font-medium block cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2 transition-all duration-300">
+                                <span>Penjual per Provinsi</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.reports.productsByRating') }}" target="_blank"
+                                class="text-white text-[15px] font-medium block cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2 transition-all duration-300">
+                                <span>Produk by Rating</span>
                             </a>
                         </li>
                     </ul>
@@ -152,10 +179,10 @@
                 <ul class="mt-3 space-y-2">
 
                     <li>
-                        <a href="javascript:void(0)"
+                        <a href="{{ route('home') }}"
                             class="text-white text-[15px] font-medium flex items-center cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2.5 transition-all duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-[18px] h-[18px] mr-3"
-                                viewBox="0 0 24 24">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                class="w-[18px] h-[18px] mr-3" viewBox="0 0 24 24">
                                 <path
                                     d="M19.56 23.253H4.44a4.051 4.051 0 0 1-4.05-4.05v-9.115c0-1.317.648-2.56 1.728-3.315l7.56-5.292a4.062 4.062 0 0 1 4.644 0l7.56 5.292a4.056 4.056 0 0 1 1.728 3.315v9.115a4.051 4.051 0 0 1-4.05 4.05zM12 2.366a2.45 2.45 0 0 0-1.393.443l-7.56 5.292a2.433 2.433 0 0 0-1.037 1.987v9.115c0 1.34 1.09 2.43 2.43 2.43h15.12c1.34 0 2.43-1.09 2.43-2.43v-9.115c0-.788-.389-1.533-1.037-1.987l-7.56-5.292A2.438 2.438 0 0 0 12 2.377z"
                                     data-original="#000000" />
@@ -167,16 +194,19 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)"
-                            class="text-white text-[15px] font-medium flex items-center cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2.5 transition-all duration-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-[18px] mr-3 fill-current"
-                                viewBox="0 0 6 6">
-                                <path
-                                    d="M3.172.53a.265.266 0 0 0-.262.268v2.127a.265.266 0 0 0 .53 0V.798A.265.266 0 0 0 3.172.53zm1.544.532a.265.266 0 0 0-.026 0 .265.266 0 0 0-.147.47c.459.391.749.973.749 1.626 0 1.18-.944 2.131-2.116 2.131A2.12 2.12 0 0 1 1.06 3.16c0-.65.286-1.228.74-1.62a.265.266 0 1 0-.344-.404A2.667 2.667 0 0 0 .53 3.158a2.66 2.66 0 0 0 2.647 2.663 2.657 2.657 0 0 0 2.645-2.663c0-.812-.363-1.542-.936-2.03a.265.266 0 0 0-.17-.066z"
-                                    data-original="#000000" />
-                            </svg>
-                            <span>Logout</span>
-                        </a>
+                        <form method="POST" action="{{ route('logout') }}" class="w-full">
+                            @csrf
+                            <button type="submit"
+                                class="w-full text-white text-[15px] font-medium flex items-center cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2.5 transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-[18px] mr-3 fill-current"
+                                    viewBox="0 0 6 6">
+                                    <path
+                                        d="M3.172.53a.265.266 0 0 0-.262.268v2.127a.265.266 0 0 0 .53 0V.798A.265.266 0 0 0 3.172.53zm1.544.532a.265.266 0 0 0-.026 0 .265.266 0 0 0-.147.47c.459.391.749.973.749 1.626 0 1.18-.944 2.131-2.116 2.131A2.12 2.12 0 0 1 1.06 3.16c0-.65.286-1.228.74-1.62a.265.266 0 1 0-.344-.404A2.667 2.667 0 0 0 .53 3.158a2.66 2.66 0 0 0 2.647 2.663 2.657 2.657 0 0 0 2.645-2.663c0-.812-.363-1.542-.936-2.03a.265.266 0 0 0-.17-.066z"
+                                        data-original="#000000" />
+                                </svg>
+                                <span>Logout</span>
+                            </button>
+                        </form>
                     </li>
                 </ul>
             </div>
