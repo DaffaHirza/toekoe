@@ -5,7 +5,8 @@
 @section('content')
     <div class="flex justify-between items-center">
         <h1 class="font-bold text-2xl">Data Kategori</h1>
-        <a href="#" class="py-3 px-5 bg-blue-500 text-white rounded-lg flex items-center gap-2">
+        <a href="{{ route('admin.category.create') }}"
+            class="py-3 px-5 bg-blue-500 text-white rounded-lg flex items-center gap-2">
             <svg class="w-5 h-5" fill="#ffff" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>

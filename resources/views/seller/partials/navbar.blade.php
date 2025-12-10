@@ -37,10 +37,13 @@
                     </svg>
                 </div>
 
-                <div class="dropdown-menu relative flex shrink-0 group">
+                <div class="dropdown-menu relative flex shrink-0 group items-center gap-3">
                     <img src="https://readymadeui.com/team-1.webp" alt="profile-pic"
                         class="w-9 h-9 rounded-full border-2 border-gray-300 cursor-pointer" />
-
+                    <div class="hidden sm:block">
+                        <p class="text-sm font-semibold text-slate-900">{{ auth()->user()->nama }}</p>
+                        <p class="text-xs text-slate-500">{{ ucfirst(auth()->user()->role) }}</p>
+                    </div>
                     <div
                         class="dropdown-content hidden group-hover:block shadow-md p-2 bg-white rounded-md absolute top-9 right-0 w-56">
                         <div class="w-full">

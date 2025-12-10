@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('produk_id')->constrained('product')->onDelete('cascade');
             $table->string('nama_pengunjung');
             $table->string('email')->nullable();
+            $table->string('provinsi')->nullable();
             $table->integer('rating'); // 1-5
             $table->text('komentar');
             $table->timestamps();
