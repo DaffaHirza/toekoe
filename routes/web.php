@@ -19,9 +19,18 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'create']);
 
 Route::middleware(['auth', 'role:seller'])->group(function () {
-    Route::get('/penjual/beranda', function () {
-        return view('penjual.beranda');
-    })->name('penjual.beranda');
+    Route::get('/seller/beranda', [SellerBerandaController::class, 'index'])->name('seller.beranda');
+    Route::get('/seller/produk', [ProductController::class, 'index'])->name('seller.pages.view');
+    Route::get('/seller/produk/create', [ProductController::class, 'create'])->name('seller.pages.create');
+    Route::post('/seller/produk', [ProductController::class, 'store'])->name('seller.pages.store');
+    Route::get('/seller/produk/{id}/edit', [ProductController::class, 'edit'])->name('seller.pages.edit');
+    Route::put('/seller/produk/{id}', [ProductController::class, 'update'])->name('seller.pages.update');
+    Route::delete('/seller/produk/{id}', [ProductController::class, 'destroy'])->name('seller.pages.destroy');
+
+    // Seller PDF reports
+    Route::get('/seller/reports/stock-by-stock', [\App\Http\Controllers\seller\ReportController::class, 'stockByStockReport'])->name('seller.reports.stockByStock');
+    Route::get('/seller/reports/stock-by-rating', [\App\Http\Controllers\seller\ReportController::class, 'stockByRatingReport'])->name('seller.reports.stockByRating');
+    Route::get('/seller/reports/low-stock', [\App\Http\Controllers\seller\ReportController::class, 'lowStockReport'])->name('seller.reports.lowStock');
 });
 
 Route::middleware(['auth', 'role:admin'])

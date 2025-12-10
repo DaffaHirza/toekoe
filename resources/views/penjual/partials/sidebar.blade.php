@@ -16,7 +16,7 @@
 
         <div class="py-4 px-4">
             <ul class="space-y-2">
-                <a href="javascript:void(0)"
+                <a href="{{ route('seller.beranda') }}"
                     class="text-white text-[15px] font-medium flex items-center cursor-pointer hover:bg-blue-700 rounded-md px-3 py-2.5 transition-all duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-[18px] h-[18px] mr-3"
                         viewBox="0 0 24 24">
@@ -54,7 +54,7 @@
                     </a>
                     <ul class="sub menu max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out ml-8">
                         <li>
-                            <a href="javascript:void(0)"
+                            <a href="{{ route('seller.pages.create') }}"
                                 class="text-white text-[15px] font-medium block cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2 transition-all duration-300">
                                 <span>Tambah Produk</span>
                             </a>
