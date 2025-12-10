@@ -10,8 +10,10 @@ class Review extends Model
         'produk_id',
         'nama_pengunjung',
         'email',
+        'nomor_hp',
         'rating',
         'komentar',
+        'provinsi',
     ];
 
     public function produk()

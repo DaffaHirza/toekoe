@@ -22,7 +22,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        // Tampilkan form pembuatan kategori baru
+        return view('admin.pages.kategori.create');
     }
 
     /**
@@ -30,7 +31,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255|unique:categories,nama',
+        ]);
+
+        $category = Category::create([
+            'nama' => $validated['nama'],
+        ]);
+
+        return redirect()->route('admin.category.index')->with('success', 'Kategori berhasil ditambahkan.');
     }
 
     /**

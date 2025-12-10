@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SellerApproved;
 use App\Mail\SellerRejected;
 
+use Illuminate\Support\Facades\Log;
+
+
 class DataPenjualController extends Controller
 {
     /**
@@ -83,22 +86,22 @@ class DataPenjualController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $validated = $request->validate([
-            'status' => 'required|in:pending,approved,rejected',
+            'status' => 'required|in:pending,approved,rejected,suspend',
             'rejection_reason' => 'nullable|string|max:500',
         ]);
 
         $seller = User::findOrFail($id);
         $oldStatus = $seller->status;
-        
+
         $seller->status = $validated['status'];
-        
+
         // Update rejection reason if status is rejected
         if ($validated['status'] === 'rejected') {
             $seller->rejection_reason = $validated['rejection_reason'] ?? null;
         } else {
             $seller->rejection_reason = null; // Clear rejection reason if approved
         }
-        
+
         $seller->save();
 
         // Send email notification only if status actually changed

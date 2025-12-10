@@ -159,6 +159,7 @@
                                         class="border rounded-lg 
             @if ($users->status === 'approved') text-green-600 border-green-400
             @elseif($users->status === 'pending') text-yellow-600 border-yellow-400
+            @elseif($users->status === 'suspend') text-purple-600 border-purple-400
             @else text-red-600 border-red-400 @endif">
 
                                         <option value="approved" class="text-green-600"
@@ -176,7 +177,7 @@
                                             Rejected
                                         </option>
 
-                                        <option value="suspend" class="text-red-600"
+                                        <option value="suspend" class="text-purple-600"
                                             {{ $users->status == 'suspend' ? 'selected' : '' }}>
                                             Suspended
                                         </option>
