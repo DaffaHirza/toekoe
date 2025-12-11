@@ -133,8 +133,8 @@
                         </td>
                         <td class="px-4 py-3 text-sm text-slate-900 font-medium">
                             <div class="flex items-center cursor-pointer w-max">
-                                <img src='https://readymadeui.com/team-1.webp' alt="team-1"
-                                    class="w-9 h-9 rounded-full shrink-0" />
+                                <img src="{{ $users->foto ? asset('storage/' . $users->foto) : 'https://ui-avatars.com/api/?name=' . urlencode($users->nama) . '&background=1e40af&color=fff' }}" alt="{{ $users->nama }}"
+                                    class="w-9 h-9 rounded-full shrink-0 object-cover" />
                                 <div class="ml-2">
                                     <p>{{ $users->nama }}</p>
                                 </div>

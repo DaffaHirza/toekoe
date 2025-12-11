@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\admin\DataPenjualController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ReportController;
+use App\Http\Controllers\admin\ProductController as AdminProductController;
 use App\Http\Controllers\seller\ProductController;
 use App\Http\Controllers\seller\BerandaController as SellerBerandaController;
 
@@ -16,6 +17,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/filter', [ProductFilterController::class, 'index'])->name('produk.filter');
 Route::get('/produk/{id}', [HomeController::class, 'show'])->name('produk.detail');
 Route::post('/produk/{id}/review', [HomeController::class, 'storeReview'])->name('produk.review.store');
+Route::get('/user/photo/{filename}', function ($filename) {
+    $path = storage_path('app/private_docs/ktp/' . $filename);
+    if (!file_exists($path)) {
+        abort(404);
+    }
+    return response()->file($path);
+})->middleware('auth')->name('user.photo');
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -59,4 +67,6 @@ Route::middleware(['auth', 'role:admin'])
         Route::get('/reports/seller-status', [ReportController::class, 'sellerStatusReport'])->name('reports.sellerStatus');
         Route::get('/reports/seller-by-province', [ReportController::class, 'sellerByProvinceReport'])->name('reports.sellerByProvince');
         Route::get('/reports/products-by-rating', [ReportController::class, 'productsByRatingReport'])->name('reports.productsByRating');
+
+        Route::get('/products', [AdminProductController::class, 'index'])->name('products.index');
     });

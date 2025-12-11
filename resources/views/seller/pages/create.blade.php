@@ -114,15 +114,6 @@
                 </div>
             </div>
 
-            {{-- PREVIEW HARGA --}}
-            <div class="bg-indigo-50  px-4 py-3 rounded-xl">
-                <p class="text-sm text-slate-600 ">
-                    Preview Harga:
-                    <span class="font-bold text-indigo-600 dark:text-indigo-300"
-                        x-text="hargaInput ? 'Rp ' + parseFloat(hargaInput).toLocaleString('id-ID') : 'Rp 0'"></span>
-                </p>
-            </div>
-
             {{-- GAMBAR PRODUK --}}
             <div class="space-y-2">
                 <label class="block text-sm font-semibold ">Gambar Produk</label>

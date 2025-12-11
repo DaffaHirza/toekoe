@@ -16,8 +16,8 @@
                 
 
                 <div class="dropdown-menu relative flex shrink-0 group items-center gap-3">
-                    <img src="https://readymadeui.com/team-1.webp" alt="profile-pic"
-                        class="w-9 h-9 rounded-full border-2 border-gray-300 cursor-pointer" />
+                    <img src="{{ auth()->user()->foto ? asset('storage/' . auth()->user()->foto) : 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->nama) . '&background=1e40af&color=fff' }}" alt="profile-pic"
+                        class="w-9 h-9 rounded-full border-2 border-gray-300 cursor-pointer object-cover" />
                     <div class="hidden sm:block">
                         <p class="text-sm font-semibold text-slate-900">{{ auth()->user()->nama }}</p>
                         <p class="text-xs text-slate-500">{{ ucfirst(auth()->user()->role) }}</p>

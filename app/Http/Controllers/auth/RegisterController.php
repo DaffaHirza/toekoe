@@ -41,7 +41,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        $fotoPath = $request->file('foto')->store('private_docs/ktp', 'local');
+        $fotoPath = $request->file('foto')->store('users/photos', 'public');
         $fotoKtpPath = $request->file('foto_ktp')->store('private_docs/ktp', 'local');
 
         $user = User::create([

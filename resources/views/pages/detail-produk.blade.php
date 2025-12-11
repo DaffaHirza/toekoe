@@ -80,10 +80,6 @@
                         </div>
 
                         <div class="flex gap-3">
-                            <button
-                                class="flex-1 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 rounded-lg transition duration-300">
-                                <i class="bi bi-heart"></i> Wishlist
-                            </button>
                             <a href="{{ route('home') }}"
                                 class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-3 rounded-lg transition duration-300">
                                 ← Kembali ke Beranda

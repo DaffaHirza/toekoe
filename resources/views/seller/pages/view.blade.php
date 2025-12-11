@@ -165,9 +165,9 @@
 
                 <div class="flex items-center max-md:mt-4">
                     <p class="text-sm text-slate-600">Display</p>
-                    <select class="text-sm text-slate-900 border border-gray-300 rounded-md h-9 mx-4 px-1 outline-none">
+                    <select class="text-sm text-slate-900 border border-gray-300 rounded-md h-9 mx-4 pl-3 pr-5 w-15 outline-none pt-0 pb-0.5">
                         <option>10</option>
-                        <option>20</option>
+                        <option>20</option> 
                         <option>50</option>
                         <option>100</option>
                     </select>

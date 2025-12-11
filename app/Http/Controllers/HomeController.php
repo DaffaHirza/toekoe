@@ -78,6 +78,15 @@ class HomeController extends Controller
 
     public function storeReview(Request $request, $id)
     {
+        // Cek apakah email sudah pernah review produk ini
+        $existingReview = Review::where('produk_id', $id)
+            ->where('email', $request->email)
+            ->first();
+
+        if ($existingReview) {
+            return redirect()->back()->withErrors(['email' => 'Email ini sudah pernah memberikan review untuk produk ini.']);
+        }
+
         $validated = $request->validate([
             'nama_pengunjung' => 'required|string|max:255',
             'email' => 'required|email|max:255',

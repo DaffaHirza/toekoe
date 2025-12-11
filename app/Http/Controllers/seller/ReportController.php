@@ -25,7 +25,7 @@ class ReportController extends Controller
             ->get();
 
         $data = [
-            'title' => 'Laporan Stock Produk (Urut: Stok Menurun)',
+            'title' => 'Laporan Stock Produk',
             'tanggal_laporan' => Carbon::now()->locale('id')->format('d F Y'),
             'products' => $products,
             'totalProducts' => $products->count(),
@@ -51,7 +51,7 @@ class ReportController extends Controller
             ->get();
 
         $data = [
-            'title' => 'Laporan Stock Produk (Urut: Rating Menurun)',
+            'title' => 'Laporan Stock Produk',
             'tanggal_laporan' => Carbon::now()->locale('id')->format('d F Y'),
             'products' => $products,
             'totalProducts' => $products->count(),
@@ -77,7 +77,7 @@ class ReportController extends Controller
             ->get();
 
         $data = [
-            'title' => 'Laporan Produk Low Stock (Stok < 2)',
+            'title' => 'Laporan Produk Low Stock',
             'tanggal_laporan' => Carbon::now()->locale('id')->format('d F Y'),
             'products' => $products,
             'totalProducts' => $products->count(),

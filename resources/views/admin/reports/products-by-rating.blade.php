@@ -107,7 +107,7 @@
     <div class="header">
         <h1>{{ $title }}</h1>
         <div class="header-info">
-            <span>Toko Elektronik Marketplace</span>
+            <span>TOEKOE Marketplace</span>
             <span>{{ $tanggal_laporan }}</span>
         </div>
     </div>
@@ -142,7 +142,7 @@
         </tbody>
     </table>
     <div class="footer">
-        <p>Laporan ini dibuat otomatis oleh sistem | © 2025 Toko Elektronik</p>
+        <p>Laporan ini dibuat otomatis oleh sistem | © 2025 TOEKOE</p>
     </div>
 </body>
 

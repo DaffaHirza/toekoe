@@ -54,13 +54,7 @@
                     </a>
                     <ul class="sub menu max-h-0 overflow-hidden transition-[max-height] duration-500 ease-in-out ml-8">
                         <li>
-                            <a href="javascript:void(0)"
-                                class="text-white text-[15px] font-medium block cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2 transition-all duration-300">
-                                <span>Tambah Produk</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)"
+                            <a href="{{ route('admin.products.index') }}"
                                 class="text-white text-[15px] font-medium block cursor-pointer hover:bg-blue-700  rounded-md px-3 py-2 transition-all duration-300">
                                 <span>Lihat Produk</span>
                             </a>

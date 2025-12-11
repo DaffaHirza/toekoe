@@ -53,10 +53,6 @@
                                 <div class="flex-1 text-black">
                                     <p class="text-4xl font-bold">Kategori Pilihan</p>
                                 </div>
-                                <a href="{{ route('produk.filter') }}"
-                                    class="bg-blue-500 text-white px-8 py-3 border-blue-500 border-2 rounded-xl font-semibold hover:bg-white hover:text-blue-500 hover:border-blue-500 transition-all duration-300">
-                                    Jelajahi Sekarang
-                                </a>
                             </div>
                             <div class="flex gap-3 overflow-x-auto pb-5" id="category-buttons">
                                 <!-- Tombol Semua -->
@@ -100,7 +96,7 @@
                 </div>
 
                 <div class="pt-4 flex justify-between max-w-7xl mx-auto">
-                    <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                    <div id="products-grid" class="grid grid-cols-6 sm:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
                         @forelse($products as $product)
                             <a href="{{ route('produk.detail', $product->id) }}"
                                 class="bg-white rounded-xl flex flex-col shadow-md overflow-hidden transition-all hover:shadow-xl">
