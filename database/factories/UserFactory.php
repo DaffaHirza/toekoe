@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -24,11 +23,24 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'nama_toko' => fake()->company(),
+            'deskripsi_singkat' => fake()->sentence(),
+            'nama' => fake()->name(),
+            'no_hp' => '08'.fake()->numerify('##########'),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'alamat' => fake()->address(),
+            'rt' => str_pad((string) fake()->numberBetween(1, 999), 3, '0', STR_PAD_LEFT),
+            'rw' => str_pad((string) fake()->numberBetween(1, 999), 3, '0', STR_PAD_LEFT),
+            'nama_kelurahan' => fake()->citySuffix(),
+            'kabupaten_kota' => fake()->city(),
+            'provinsi' => fake()->state(),
+            'no_ktp' => fake()->unique()->numerify('################'),
+            'foto' => 'placeholder_user_photo.jpg',
+            'foto_ktp' => 'placeholder_user_ktp.jpg',
             'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'role' => 'seller',
+            'status' => 'approved',
+            'rejection_reason' => null,
         ];
     }
 
@@ -37,8 +49,6 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
+        return $this;
     }
 }
