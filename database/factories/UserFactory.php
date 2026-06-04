@@ -24,11 +24,23 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'nama' => fake()->name(),
+            'nama_toko' => fake()->company(),
+            'deskripsi_singkat' => fake()->sentence(),
+            'no_hp' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'alamat' => fake()->address(),
+            'rt' => '001',
+            'rw' => '001',
+            'nama_kelurahan' => fake()->city(),
+            'kabupaten_kota' => fake()->city(),
+            'provinsi' => fake()->state(),
+            'no_ktp' => fake()->numerify('################'),
+            'foto' => 'placeholder_foto.jpg',
+            'foto_ktp' => 'placeholder_foto_ktp.jpg',
             'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'role' => 'seller',
+            'status' => 'approved',
         ];
     }
 
