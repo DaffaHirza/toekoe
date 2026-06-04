@@ -183,9 +183,6 @@
             const categoryTitle = document.getElementById('category-title');
             const productCount = document.getElementById('product-count');
 
-            // Load initial products
-            loadProducts('{{ request('category') ?? 'all' }}');
-
             categoryButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const category = this.getAttribute('data-category');
@@ -223,14 +220,23 @@
                 `;
 
                 // Fetch products
-                fetch(`{{ route('home') }}?category=${category}`, {
+                fetch(`/?category=${category}`, {
                         headers: {
                             'X-Requested-With': 'XMLHttpRequest',
                             'Accept': 'application/json'
                         }
                     })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Server error: ${response.status}`);
+                        }
+                        return response.json();
+                    })
                     .then(data => {
+                        if (data.error) {
+                            throw new Error(data.message || data.error);
+                        }
+
                         // Update title and count
                         categoryTitle.textContent = category === 'all' ? 'Semua Produk' :
                             `Produk ${data.category_name}`;
@@ -249,10 +255,20 @@
                         productsGrid.innerHTML = `
                         <div class="col-span-full text-center py-12">
                             <p class="text-red-500">Terjadi kesalahan saat memuat produk</p>
+                            <p class="text-gray-400 text-sm mt-2">${error.message}</p>
+                            <button data-retry-category="${category}" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Coba Lagi</button>
                         </div>
                     `;
                     });
             }
+
+            // Event delegation for retry button
+            productsGrid.addEventListener('click', function(e) {
+                const retryBtn = e.target.closest('[data-retry-category]');
+                if (retryBtn) {
+                    loadProducts(retryBtn.dataset.retryCategory);
+                }
+            });
 
             function renderProduct(product) {
                 const avgRating = product.reviews.length > 0 ?

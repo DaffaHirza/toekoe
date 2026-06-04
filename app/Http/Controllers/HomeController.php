@@ -14,8 +14,8 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        // Check if it's an AJAX request
-        if ($request->ajax()) {
+        // Check if it's an AJAX request (via X-Requested-With header or Accept: application/json)
+        if ($request->ajax() || $request->wantsJson()) {
             return $this->getProductsAjax($request);
         }
 
@@ -40,27 +40,34 @@ class HomeController extends Controller
 
     private function getProductsAjax(Request $request)
     {
-        $categoryFilter = $request->get('category');
+        try {
+            $categoryFilter = $request->get('category');
 
-        $products = Produk::with(['user', 'category', 'reviews'])
-            ->whereHas('user', function ($query) {
-                $query->where('status', 'approved');
-            })
-            ->when($categoryFilter && $categoryFilter !== 'all', function ($query) use ($categoryFilter) {
-                $query->where('category_id', $categoryFilter);
-            })
-            ->latest()
-            ->get();
+            $products = Produk::with(['user', 'category', 'reviews'])
+                ->whereHas('user', function ($query) {
+                    $query->where('status', 'approved');
+                })
+                ->when($categoryFilter && $categoryFilter !== 'all', function ($query) use ($categoryFilter) {
+                    $query->where('category_id', $categoryFilter);
+                })
+                ->latest()
+                ->get();
 
-        $categories = Category::all();
-        $selectedCategory = $categoryFilter ? $categories->firstWhere('id', $categoryFilter) : null;
+            $categories = Category::all();
+            $selectedCategory = $categoryFilter ? $categories->firstWhere('id', $categoryFilter) : null;
 
-        return response()->json([
-            'products' => $products,
-            'count' => $products->count(),
-            'category_name' => $selectedCategory ? $selectedCategory->nama : 'Semua Produk',
-            'category_id' => $categoryFilter
-        ]);
+            return response()->json([
+                'products' => $products,
+                'count' => $products->count(),
+                'category_name' => $selectedCategory ? $selectedCategory->nama : 'Semua Produk',
+                'category_id' => $categoryFilter
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Gagal memuat produk',
+                'message' => config('app.debug') ? $e->getMessage() : 'Terjadi kesalahan server'
+            ], 500);
+        }
     }
 
     public function show($id)
