@@ -30,6 +30,8 @@ class UploadProdukTest extends TestCase
     }
 
 
+
+
     /**
      * Test upload produk berhasil dengan semua data lengkap.
      */
@@ -43,7 +45,7 @@ class UploadProdukTest extends TestCase
             'harga' => 15000000,
             'stok' => 5,
             'kondisi' => 'baru',
-            'category_id' => $this->category->id,
+            'category_id' => 4,
             'image' => UploadedFile::fake()->image('laptop.jpg'),
         ]);
 
@@ -312,7 +314,7 @@ class UploadProdukTest extends TestCase
     /**
      * Test harga harus numeric - gagal dengan string.
      */
-    public function bukannumeric(): void
+    public function test_bukannumeric(): void
     {
         $response = $this->actingAs($this->seller)->post('/seller/produk', [
             'nama_produk' => 'Produk Test',

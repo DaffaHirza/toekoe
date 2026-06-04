@@ -20,6 +20,38 @@ class LoginTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function testguestaccesssellerpage(): void
+    {
+        $response = $this->get('/seller/beranda');
+
+        $response->assertRedirect('/login');
+    }
+
+    public function testselleraccesssellerpage(): void
+    {
+        $seller = User::factory()->create([
+            'role' => 'seller',
+        ]);
+
+        $response = $this->actingAs($seller)
+            ->get('/seller/beranda');
+
+        $response->assertStatus(200);
+    }
+
+    public function testadminaccesssellerpage(): void
+    {
+        $admin = User::factory()->create([
+            'role' => 'admin',
+        ]);
+
+        $response = $this->actingAs($admin)
+            ->get('/seller/beranda');
+
+        $response->assertStatus(403);
+    }
+
+
     /**
      * Test login berhasil dengan email dan password yang benar.
      */
@@ -94,6 +126,7 @@ class LoginTest extends TestCase
 
         $response->assertSessionHasErrors('password');
     }
+
 
     /**
      * Test admin login dan redirect ke halaman admin beranda.
